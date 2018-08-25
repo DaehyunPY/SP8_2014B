@@ -1,0 +1,73 @@
+target_files:
+  - ResortLess/ResortLess*.root
+
+save_as: exported.parquet
+
+spark:
+  spark.driver.memory: 3g
+  # spark.cores.max: 10
+  spark.executor.cores: 5
+  spark.executor.memory: 4g
+
+spectrometer:
+  #
+  #   ion2nd                 ion1st       electron
+  # ┌───┐│                      │             │                    │┌───┐
+  # │   ││                      │             │                    ││   │
+  # │   ││                      │             │                    ││   │
+  # │   ││                      │             │                    ││   │
+  # │ion││                      │             │                    ││ele│
+  # │mcp││        acc_reg       │   sep_reg   │     draft_reg      ││mcp│
+  # │   ││                      │             │                    ││   │
+  # │   ││                      │             │                    ││   │
+  # │   ││                      │────x────────│                    ││   │
+  # │   ││                      │             │                    ││   │
+  # └───┘│                      │             │                    │└───┘
+  #
+  #                        uniform magnetic field
+  #                       symbol x: reaction point
+  #
+  draft_reg: 67.4  # mm
+  elesep_reg: 33  # mm
+  ionsep_reg: 16.5  # mm
+  acc_reg: 82.5  # mm
+  mcpgep_reg: 10  # mm
+  electron_epoten: -200  # V
+  ion1st_epoten: -285  # V
+  ion2nd_epoten: -2000  # V
+  ionmcp_epoten: -3200  # V
+  uniform_mfield: 6.843  # Gauss
+
+ions:
+  # ((x,y) * rot(th) - (x0,y0)) * (dx,dy) + (x1,y1)
+  t0: -101.590  # ns
+  x0: 0.7719  # mm
+  y0: -1.99585  # mm
+  dx: 1.12
+  dy: 1.12
+  dead_time: 18000  # ns
+
+ion_momemtum_calculator:
+  Ar_1:
+    fr: 3300  # ns
+    to: 6300  # ns
+    mass: 39.948  # u
+    charge: 1  # au
+    safe_pz_range: 200  # au
+    x1: 0  # mm
+    y1: 0  # mm
+
+electrons:
+  # ((x,y) * rot(th) - (x0,y0)) * (dx,dy) + (x1,y1)
+  t0: -160.322  # ns
+  th: -30  # deg
+  x0: 0  # mm
+  y0: 0.082456  # mm
+  dx: 1.0384
+  dy: 1.05967
+  dead_time: 60  # ns
+
+electron_momemtum_calculator:
+  fr: 16  # ns
+  to: 46  # ns
+  safe_pz_range: 2  # au
