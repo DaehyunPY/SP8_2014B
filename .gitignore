@@ -1,3 +1,6 @@
 *.root
 *.parquet
 *.log
+.ipynb_checkpoints
+/Notebooks/data
+/sync.sh
