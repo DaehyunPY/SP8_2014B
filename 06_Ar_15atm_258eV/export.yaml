@@ -56,6 +56,14 @@ ion_momemtum_calculator:
     safe_pz_range: 200  # au
     x1: 0  # mm
     y1: 0  # mm
+  Ar_2:
+    fr: 3000  # ns
+    to: 3400  # ns
+    mass: 39.948  # u
+    charge: 2  # au
+    safe_pz_range: 200  # au
+    x1: 0  # mm
+    y1: 0  # mm
 
 electrons:
   # ((x,y) * rot(th) - (x0,y0)) * (dx,dy) + (x1,y1)
