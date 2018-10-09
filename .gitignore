@@ -2,5 +2,6 @@
 *.parquet
 *.log
 .ipynb_checkpoints
+/site-packages
+/MongoDB
 /Notebooks/data
-/sync.sh

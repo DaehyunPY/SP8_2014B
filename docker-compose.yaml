@@ -1,19 +1,26 @@
-version: '3.1'
+version: '2'
 services:
   jupyter:
-    image: daehyunpy/sp8-delayline
+    image: daehyunpy/playground-python:v201809.2
+    restart: unless-stopped
     command:
+      - python
+      - -m
       - jupyter
       - lab
       - --allow-root
       - --config=/app/jupyter_notebook_config.json
-    ports:
-      - 18888:8888
+    environment:
+      HOME: /app
     volumes:
+      - ./jupyter_notebook_config.json:/app/jupyter_notebook_config.json:ro
+      - ./local.pth:/app/.venv/lib/python3.6/site-packages/local.pth:ro
       - .:/data
-    secrets:
-      - source: config
-        target: /app/jupyter_notebook_config.json
-secrets:
-  config:
-    file: ./jupyter_notebook_config.json
+      - ./site-packages:/app/.local/lib/python3.6/site-packages
+    links:
+      - mongodb
+  mongodb:
+    image: mongo
+    restart: unless-stopped
+    volumes: 
+      - ./MongoDB:/data/db
