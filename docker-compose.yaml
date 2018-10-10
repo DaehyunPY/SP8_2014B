@@ -10,13 +10,10 @@ services:
       - lab
       - --allow-root
       - --config=/app/jupyter_notebook_config.json
-    environment:
-      HOME: /app
     volumes:
       - ./jupyter_notebook_config.json:/app/jupyter_notebook_config.json:ro
       - ./local.pth:/app/.venv/lib/python3.6/site-packages/local.pth:ro
       - .:/data
-      - ./site-packages:/app/.local/lib/python3.6/site-packages
     links:
       - mongodb
   mongodb:

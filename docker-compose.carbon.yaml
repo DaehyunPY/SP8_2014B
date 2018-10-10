@@ -5,15 +5,18 @@ services:
     group_add:
       - 1001
       - 2000
+    environment:
+      HOME: /app
+      JAVA_TOOL_OPTIONS: -Duser.home=/app
     ports:
       - 4040
       - 7777:8888
     volumes:
+      - ./site-packages:/app/site-packages
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
       - /home/notebook:/data
       - /home/notebook:/home/notebook
-      - /home/notebook/.jupyter:/app/.jupyter
       - /home/fukuzawa:/home/fukuzawa
       - /home/daehyun:/home/daehyun
       - /home/saito:/home/saito

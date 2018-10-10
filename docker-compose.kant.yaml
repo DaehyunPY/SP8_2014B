@@ -5,6 +5,7 @@ services:
       - 4040
       - 8888:8888
     volumes:
+      - ./site-packages:/app/.local/lib/python3.6/site-packages
       - ~/.jupyter:/app/.jupyter
   mongodb:
     ports:

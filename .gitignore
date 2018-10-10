@@ -1,7 +1,12 @@
 *.root
 *.parquet
 *.log
+.DS_Store
+._.DS_Store
 .ipynb_checkpoints
+ResortLess
+/up.sh
+/local.pth
 /site-packages
 /MongoDB
 /Notebooks/data
