@@ -14,8 +14,6 @@ services:
       - ./jupyter_notebook_config.json:/app/jupyter_notebook_config.json:ro
       - ./local.pth:/app/.venv/lib/python3.6/site-packages/local.pth:ro
       - .:/data
-    links:
-      - mongodb
   mongodb:
     image: mongo
     restart: unless-stopped
